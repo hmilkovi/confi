@@ -1,0 +1,150 @@
+{
+    "info": {
+      "title": "confi",
+      "version": "1.0.0",
+      "license": {
+        "name": "GNU"
+      },
+      "description": "Confi System"
+    },
+    "paths": {
+      "/api/v1/jwt": {
+        "post": {
+          "summary": "/api/v1/jwt",
+          "description": "Get JWT for auth",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+                "description": "JSON payload example: {\"email\":\"hmilkovi@gmail.com\",\"password\":\"RHjWP2DVOM8UsbTi\"}",
+                "in": "body",
+                "name": "body",
+                "required": true,
+                "schema": {
+                  "type": "object"
+                }
+            }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "accessToken": {
+                    "type": "string",
+                    "example": "lVJM3EQKX7hRpkwPMT5dgGdaM2yv7oxB5spOnM...."
+                  }
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
+      "/api/v1/booking/register": {
+        "post": {
+          "summary": "/api/v1/booking/register",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+                "description": "JSON payload example: {\"email\":\"hmilkovi@gmail.com\",\"firstname\":\"Hrvoje\", \"lastname\":\"Milkovic\", \"phone\":\"12345678\", \"conference_name\": \"defcon\"}",
+                "in": "body",
+                "name": "body",
+                "required": true,
+                "schema": {
+                  "type": "object"
+                }
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/api/v1/booking/list": {
+        "get": {
+          "summary": "/api/v1/booking/list",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+                "name": "Access-Token",
+                "in": "header",
+                "description": "jwt token",
+                "required": true,
+                "type": "string"
+            }
+          ],
+          "responses": {
+            "401": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string",
+                    "example": "You are not admin!"
+                  }
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
+      "/api/v1/booking/remove/{id}": {
+        "delete": {
+          "summary": "/api/v1/booking/remove/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }, {
+                "name": "Access-Token",
+                "in": "header",
+                "description": "jwt token",
+                "required": true,
+                "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_deleted": {
+                      "type": "number",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+          }
+        }
+      },
+      "/": {
+        "get": {
+          "summary": "/",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+                "description": "I'm alive!"
+            }
+          }
+        }
+      }
+    },
+    "swagger": "2.0"
+  }

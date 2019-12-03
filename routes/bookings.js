@@ -8,7 +8,7 @@ let listAll = async(req, res, next) => {
     models.db.booking.list()
     .then(function (data) {
         res.status(200)
-            .json({ data: data });
+            .json(data);
         })
         .catch(function (err) {
             res.status(500).json({ 'error':  err.message });
@@ -37,8 +37,9 @@ let create = async(req, res, next) => {
 
     models.db.booking.add(req.body)
     .then(function (data) {
+        delete data.confirmation_code;
         res.status(200)
-            .json({ data: data });
+            .json(data);
         })
         .catch(function (err) {
             res.status(500).json({ 'error':  err.message });
@@ -50,7 +51,7 @@ let remove = async(req, res, next) => {
     models.db.booking.remove(bookingId)
     .then(function (data) {
         res.status(200)
-            .json({ data: data });
+            .json({ total_deleted: data });
         })
         .catch(function (err) {
             res.status(500).json({ 'error':  err.message });

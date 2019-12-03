@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "njwt": "^1.0.0",
-    "pg-promise": "^10.3.1"
+    "pg-promise": "^10.3.1",
+    "swagger-ui-express": "^4.1.2"
   }
 }
