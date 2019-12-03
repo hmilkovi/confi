@@ -33,3 +33,5 @@ var server = http.createServer(app);
 server.listen(process.env.PORT, function() {
 	console.log('Confi server listening on port ' + server.address().port);
 });
+
+module.exports = server

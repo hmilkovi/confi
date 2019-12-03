@@ -26,6 +26,10 @@ class Booking {
     async list() {
         return this.db.any('SELECT * FROM booking');
     }
+
+    async empty() {
+        return this.db.none('DELETE FROM booking');
+    }
 }
 
 module.exports = Booking;

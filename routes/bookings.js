@@ -28,7 +28,7 @@ let sendEmail  = function(data){
         to: data.email,
         from: 'info@confio.io',
         subject: 'Confi register code for ' + data.conference_name,
-        text: "Where is your confirmation code: " + data.confirmation_code
+        text: "Here is your confirmation code: " + data.confirmation_code
     };
     console.log(mailOptions)
     transporter.sendMail(mailOptions, (err, res) => {
