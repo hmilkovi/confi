@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(auth.auth);
 
 app.use('/v1/jwt', login);
-app.use('/v1/bookings', bookings);
+app.use('/v1/booking', bookings);
 
-app.get('/', auth.isAuth, function(req, res){
+app.get('/', function(req, res){
    res.send("I'm alive!");
 });
 

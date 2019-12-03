@@ -4,7 +4,6 @@ services:
     image: postgres:12-alpine
     restart: always
     environment:
-      - POSTGRES_INITDB_ARGS="--auth-host=md5 --auth-local=peer"
       - POSTGRES_USER=confi
       - POSTGRES_PASSWORD=confi
       - POSTGRES_DB=confi
@@ -15,7 +14,7 @@ services:
     restart: always
     environment:
       - NODE_ENV=development
-      - NODE_ENV=3000
+      - PORT=3000
       - APP_SECRET=s1vgUFTix1JyXXbHHNf76HAX
       - DB_CONNECTION="postgres://confi:confi@db:5432/confi"
     ports:
