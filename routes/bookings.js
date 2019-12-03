@@ -1,5 +1,7 @@
+const nodemailer = require('nodemailer');
 const express = require('express'),
     router = express.Router(),
+    sgTransport = require('nodemailer-sendgrid-transport'),
     models = require('../models');
 
 const auth = require('../middleware/auth')
@@ -12,6 +14,28 @@ let listAll = async(req, res, next) => {
         })
         .catch(function (err) {
             res.status(500).json({ 'error':  err.message });
+    });
+}
+
+let sendEmail  = function(data){
+    let options = {
+        auth: {
+            api_key: process.env.SENDGRID
+        }
+    }
+    let transporter = nodemailer.createTransport(sgTransport(options));
+    let mailOptions = {
+        to: data.email,
+        from: 'info@confio.io',
+        subject: 'Confi register code for ' + data.conference_name,
+        text: "Where is your confirmation code: " + data.confirmation_code
+    };
+    console.log(mailOptions)
+    transporter.sendMail(mailOptions, (err, res) => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(res);
     });
 }
 
@@ -37,6 +61,7 @@ let create = async(req, res, next) => {
 
     models.db.booking.add(req.body)
     .then(function (data) {
+        sendEmail(data)
         delete data.confirmation_code;
         res.status(200)
             .json(data);
