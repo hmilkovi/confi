@@ -1,0 +1,24 @@
+{
+  "name": "confi",
+  "version": "1.0.0",
+  "description": "Confi System",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmilkovi/confi.git"
+  },
+  "author": "Hrvoje Milkovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hmilkovi/confi/issues"
+  },
+  "homepage": "https://github.com/hmilkovi/confi#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "njwt": "^1.0.0",
+    "pg-promise": "^10.3.1"
+  }
+}

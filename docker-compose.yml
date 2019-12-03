@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - POSTGRES_INITDB_ARGS="--auth-host=md5 --auth-local=peer"
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  app:
+    image: hrvoje6/confi
+    restart: always
+    environment:
+      - NODE_ENV=development
+      - NODE_ENV=3000
+      - APP_SECRET=s1vgUFTix1JyXXbHHNf76HAX
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
