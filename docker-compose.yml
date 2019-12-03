@@ -5,7 +5,9 @@ services:
     restart: always
     environment:
       - POSTGRES_INITDB_ARGS="--auth-host=md5 --auth-local=peer"
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=confi
+      - POSTGRES_PASSWORD=confi
+      - POSTGRES_DB=confi
     ports:
       - "5432:5432"
   app:
@@ -15,6 +17,7 @@ services:
       - NODE_ENV=development
       - NODE_ENV=3000
       - APP_SECRET=s1vgUFTix1JyXXbHHNf76HAX
+      - DB_CONNECTION="postgres://confi:confi@db:5432/confi"
     ports:
       - "3000:3000"
     depends_on:

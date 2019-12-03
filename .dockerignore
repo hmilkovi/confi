@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+pg_init.sh
+README.node_modules
+.gitignore
+LICENSE
+Dockerfile
+docker-compose.yml
