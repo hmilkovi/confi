@@ -16,7 +16,6 @@ install:
 - npm i
 
 script:
-- npm run test-unit
 - npm run test-integration
 
 cache:
