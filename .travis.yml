@@ -1,0 +1,23 @@
+---
+dist: xenial
+
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+before_install:
+- docker run -d --rm -e POSTGRES_USER=confi -e POSTGRES_PASSWORD=confi -e POSTGRES_DB=confi -p 5432:5432 postgres:12-alpine
+- docker ps -a
+
+install:
+- npm i
+
+script:
+- npm run test-unit
+- npm run test-integration
+
+cache:
+  npm: false
