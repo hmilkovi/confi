@@ -9,6 +9,7 @@ process.env.APP_SECRET = "s1vgUFTix1JyXXbHHNf76HAX";
 process.env.DB_CONNECTION = "postgres://confi:confi@127.0.0.1:5432/confi";
 
 let db = require("../../models").db;
+db.booking.init()
 
 describe("Booking models", function(){
 
