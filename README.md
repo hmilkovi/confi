@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/hmilkovi/confi.svg?branch=master)](https://travis-ci.com/hmilkovi/confi)
+
 # Confi
 
 Some notes:
