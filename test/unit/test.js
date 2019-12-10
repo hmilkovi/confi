@@ -5,7 +5,7 @@ let should = chai.should();
 
 process.env.NODE_ENV = "development";
 process.env.PORT = 3000;
-process.env.APP_SECRET = "s1vgUFTix1JyXXbHHNf76HAX";
+process.env.APP_SECRET = "";
 process.env.DB_CONNECTION = "postgres://confi:confi@127.0.0.1:5432/confi";
 
 let db = require("../../models").db;
